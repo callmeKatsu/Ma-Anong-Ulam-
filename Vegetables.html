@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <title>Mama's Recipes Guide</title>
+<style>
+
+.navigation {
+  display: flex;
+  align-items: center;
+}
+
+.navigation a {
+  color: #000000;
+  text-align: center;
+  padding: 10px 50px;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.navigation a:hover{
+  color: rgb(241, 128, 53);
+}
+
+.dropdown {
+  position: relative;
+  z-index: 1;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  min-width: 140px;
+  border-radius: 20px ;
+  background-color: rgba(253, 193, 63, 0.733);
+}
+
+.dropdown.show .dropdown-content {
+  display: block;
+}
+
+.dropdown-content ul {
+  list-style-type: none;
+  padding: 0px;
+  margin: 0;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: center;
+  border-radius: 50px;
+}
+
+.dropdown-content a:hover {
+  background-color: #f37c0c;
+}
+
+.rotate {
+  transform: rotate(180deg);
+  transition: transform 0.3s ease;
+}
+
+#image {
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+#image:hover {
+  box-shadow: 0px 4px 8px rgb(0, 0, 0);
+}
+
+</style>
+
+</head>
+<body>
+<header style="display: flex; align-items: center; justify-content: space-between; padding: 10px 0px 0px 10px; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">
+  <div>
+  <p style="color: #000000; font-size: 25px; padding-left: 35px; font-weight: bold;">MA' ANONG ULAM?</p>
+  </div>
+
+  <nav class="navigation">
+    <a style="font-weight: bold;" href="index.html">HOME</a>
+    <div class="dropdown">
+      <a style="padding: 0%; font-weight: bold; padding-left: 10px;cursor: pointer;" onclick="toggleDropdown(event)">
+        CATEGORIES
+        <i class="fas fa-chevron-down"></i>
+      </a>
+      <div class="dropdown-content">
+        <ul>
+          <li><a style="color: black;" href="Vegetables.html"><i class="fas fa-light fa-carrot"></i>Vegetable</a></li>
+          <li><a style="color: black;" href="Seafood.html"><i class="fas fa-light fa-shrimp"></i>Seafood</a></li>
+          <li><a style="color: black;" href="Chicken.html"><i class="fas fa-light fa-drumstick-bite"></i>Chicken</a></li>
+          <li><a style="color: black;" href="Pork.html"><i class="fas fa-light fa-bacon"></i>Pork</a></li>
+          <li><a style="color: black;" href="Beef.html"><i class="fas fa-light fa-cow"></i>Beef</a></li>
+          <li><a style="color: black;" href="Fish.html"><i class="fas fa-light fa-fish"></i>Fish</a></li>
+        </ul>
+      </div>
+    </div>
+    <a style="font-weight: bold;" href="AboutUs.html">ABOUT US</a>
+  </nav>
+</header>
+
+<hr style="border: none; border-top: 2px solid #000000;">
+
+<div>
+  <h1 style="text-align: center; width: 20%; background-color: #f37c0c; font-size: 30px; font-weight: bold; padding: 4px 20px; border-radius: 25px;">Vegetables Recipes</h1>
+</div>
+<div style="margin-top: 90px; margin-left: 75px; margin-right: 50px; margin-bottom: 80px; display: grid; grid-template-columns: repeat(3, 6fr); grid-gap: 20px; row-gap: 100px;"class="subfront">
+    <h1 style="text-align: left; position: absolute; top: 30%; left: 14%; right: 0%;">Chop Suey</h1>
+    <img style="height: 250px; width: 90%; object-fit: fill; border-radius: 10%;" id="image" src="sapsoy.jpg" onclick="showRecipeDetails('chop suey')">
+    <h1 style="text-align: left; position: absolute; top: 30%; left: 41%; right: 0%;">Ginisang Munggo</h1>
+    <img style="height: 250px; width: 90%; object-fit: cover; border-radius: 10%;" id="image" src="ginisang munggo.jpg" onclick="showRecipeDetails('ginisang munggo')">
+    <h1 style="text-align: left; position: absolute; top: 30%; left: 71%; right: 0%;">Munggo Pinakbet</h1>
+    <img style="height: 250px; width: 90%; object-fit: fill; border-radius: 10%;" id="image" src="ginisang pinakbet.jpg" onclick="showRecipeDetails('munggo pinakbet')">
+    <h1 style="text-align: left; position: absolute; top: 84%; left: 8%; right: 0%;">Ginataang Kalabasa</h1>
+    <img style="height: 250px; width: 90%; object-fit: fill; border-radius: 10%;" id="image" src="ginitaang kalabasa.jpg" onclick="showRecipeDetails('ginataang kalabasa')">
+    <h1 style="text-align: left; position: absolute; top: 84%; left: 40%; right: 0%;">Ginataang Langka</h1>
+    <img style="height: 250px; width: 90%; object-fit: fill; border-radius: 10%;" id="image" src="ginataang-langka.jpg" onclick="showRecipeDetails('ginataang langka')">
+    <h1 style="text-align: left; position: absolute; top: 84%; left: 73%; right: 0%;">Bicol Express</h1>
+    <img style="height: 250px; width: 90%; object-fit: fill; border-radius: 10%;" id="image" src="bicol express.jpg" onclick="showRecipeDetails('bicol express')">
+  </div>
+
+
+
+<script>
+    // This is the function for openning the corresponding recipes HTML file
+    function showRecipeDetails(imageId) {
+      // This is the ID of the clicked image and redirect to the corresponding HTML file
+    switch (imageId) {
+      case "chop suey":
+          // To redirect to Recipes HTML file
+          window.location.href = "Ingridients1.html";
+          break;
+      case "ginisang munggo":
+          window.location.href = "Ingridients2.html";
+          break;
+      case "munggo pinakbet":
+          window.location.href = "Ingridients3.html";
+          break;
+      case "ginataang kalabasa":
+          window.location.href = "Ingridients4.html";
+          break;
+      case "ginataang langka":
+          window.location.href = "Ingridients5.html";
+          break;
+      case "bicol express":
+          window.location.href = "Ingridients6.html";
+          break;
+      }
+    }
+</script>
+
+<script>
+function toggleDropdown(event) {
+  event.preventDefault();
+  var dropdown = event.currentTarget.parentNode;
+  var icon = dropdown.querySelector('.fas.fa-chevron-down');
+
+  dropdown.classList.toggle("show");
+  icon.classList.toggle("rotate");
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  var dropdown = document.querySelector('.dropdown');
+
+  dropdown.addEventListener('mouseleave', function() {
+    var icon = dropdown.querySelector('.fas.fa-chevron-down');
+
+    dropdown.classList.remove("show");
+    icon.classList.remove("rotate");
+  });
+});
+</script>
+</body>
+</html>
